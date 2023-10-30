@@ -1,0 +1,14 @@
+<app-page-wrapper class="page">
+  <img [src]="'https://itsmycity.ru' + data.image.imgpath" alt="">
+
+  <h1>{{ data.bigtitle }}</h1>
+
+  <p class="secondary-title">{{ data.title }}</p>
+
+  <p class="date">{{ data.ts | date: 'dd MMMM, hh:mm, yyyy' }} г.</p>
+
+  <div
+    class="article"
+    [innerHtml]="data.content | sanitizeHtml"
+  ></div>
+</app-page-wrapper>

@@ -1,0 +1,24 @@
+@import "breakpoints";
+
+.page-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  max-width: 710px;
+  padding-top: 40px;
+}
+
+@media (max-width: $mobile) {
+  .container {
+    max-width: 564px;
+    padding-left: 27px;
+    padding-right: 27px;
+    padding-top: 27px;
+  }
+}

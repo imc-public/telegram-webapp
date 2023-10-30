@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/fonts/stem.css";
+@import "assets/fonts/inter.css";
+@import "headings";
+
+p {
+  margin: 0 0 20px;
+}
+
+a {
+  color: #554bff;
+}
+
+body {
+  margin: 0;
+  font-size: 18px;
+  font-family: Georgia;
+  line-height: 140%;
+  color: #202020;
+}

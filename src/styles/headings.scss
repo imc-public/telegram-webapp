@@ -1,0 +1,16 @@
+@import "breakpoints";
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: stem, sans-serif;
+  line-height: 120%;
+}
+
+h1  {
+  font-size: 35px;
+}
+
+@media screen and (max-width: $mobile) {
+  h1  {
+    font-size: 22px;
+  }
+}
