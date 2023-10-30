@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, of, switchMap, throwError } from 'rxjs';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { environment } from '../../environments/environment';
 import { IApiResponse } from '../interfaces/api-response.interface';
@@ -18,12 +18,12 @@ export class ApiService {
     private httpClient: HttpClient,
     private jsonService: JsonService,
     private cryptoService: CryptoService,
-    private router: Router
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   public getArticle$(): Observable<IApiResponse | null> {
     // TODO: change to url
-    const url = `${this.apiHost}/getpubdatatelegram${this.url}`;
+    const url = `${this.apiHost}/getpubdatatelegram/${this.url}`;
 
     return this.httpClient.get(url, { responseType: 'text' })
       .pipe(
@@ -36,6 +36,6 @@ export class ApiService {
   }
 
   private get url(): string {
-    return this.router.url;
+    return this.activatedRoute.snapshot.queryParams['hash'] ?? '';
   }
 }
