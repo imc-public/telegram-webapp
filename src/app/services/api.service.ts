@@ -23,7 +23,7 @@ export class ApiService {
 
   public getArticle$(): Observable<IApiResponse | null> {
     // TODO: change to url
-    const url = `${this.apiHost}/getpubdatatelegram/${this.articleEndpoint}`;
+    const url = `${this.apiHost}/getpubdatatelegram${this.url}`;
 
     return this.httpClient.get(url, { responseType: 'text' })
       .pipe(
@@ -37,9 +37,5 @@ export class ApiService {
 
   private get url(): string {
     return this.router.url;
-  }
-
-  private get articleEndpoint(): string {
-    return this.cryptoService.encryptString(this.url);
   }
 }
