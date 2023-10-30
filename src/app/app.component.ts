@@ -8,6 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { PageBigTitleComponent } from './components/page-big-title/page-big-title.component';
+import { Title } from '@angular/platform-browser';
 
 registerLocaleData(localeRu);
 
@@ -28,6 +29,7 @@ export class AppComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private apiService: ApiService,
     private destroyRef: DestroyRef,
+    private title: Title,
   ) {
   }
 
@@ -46,8 +48,15 @@ export class AppComponent implements OnInit {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe({
-        next: async (data) => this.$apiData.set(data),
+        next: async (data) => {
+          this.setTitle(data?.title ?? '');
+          this.$apiData.set(data);
+        },
         error: (error) => console.error(error)
       });
+  }
+
+  private setTitle(title: string): void {
+    this.title.setTitle(title);
   }
 }
